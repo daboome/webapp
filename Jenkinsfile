@@ -6,15 +6,14 @@ pipeline {
 
     environment {
         scmVars = checkout([$class: 'GitSCM', branches: [[name: '/ad5/'], [name: '/ad6/'], [name: '/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daboome/webapp']]])
-        foo = 'foovalue'
     }
 
     stages{
         stage('Build'){
             steps {
-                echo "foo is $foo"
-                echo "Commit ${env.GIT_COMMIT}"
-                echo "Branch name ${env.GIT_BRANCH}"
+                echo "GIT_COMMIT ${env.GIT_COMMIT}"
+                echo "GIT_BRANCH ${env.GIT_BRANCH}"
+                echo "BRANCH_NAME ${env.BRANCH_NAME}"
                 sh "mvn clean package -DwarName=${env.GIT_BRANCH}"
                 sh "cp target/${env.GIT_BRANCH}.war ./${env.GIT_BRANCH}.war"
             }
