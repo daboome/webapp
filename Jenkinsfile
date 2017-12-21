@@ -9,7 +9,7 @@ node {
     }
 
     stage('Deploy') {
-        if (scmVars.GIT_LOCAL_BRANCH == "ad5" || scmVars.GIT_LOCAL_BRANCH == "ad6") {
+        if (scmVars.GIT_LOCAL_BRANCH == "ad5" || scmVars.GIT_LOCAL_BRANCH == "ad6" || scmVars.GIT_LOCAL_BRANCH == "ad7") {
             echo "now deploying.... ${scmVars.GIT_LOCAL_BRANCH}"
         }
     }
