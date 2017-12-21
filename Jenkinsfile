@@ -12,8 +12,8 @@ pipeline {
         stage('Build'){
             steps {
                 echo "GIT_COMMIT ${env.GIT_COMMIT}"
-                def git_branch = env.GIT_BRANCH
-                def list = git_branch.tokenize('/')
+                git_branch = env.GIT_BRANCH
+                list = git_branch.tokenize('/')
                 echo "GIT_BRANCH ${list[1]}"
                 sh "mvn clean package -DwarName=${env.GIT_BRANCH}"
                 sh "cp target/${env.GIT_BRANCH}.war ./${env.GIT_BRANCH}.war"
