@@ -6,7 +6,7 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                echo 'building $BRANCH_NAME'
+                echo 'Building ${env.BRANCH_NAME}'
                 sh 'mvn clean package -DwarName=wdw'
             }
         }
