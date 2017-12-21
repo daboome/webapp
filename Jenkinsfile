@@ -12,8 +12,8 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                echo 'foo is $foo'
-                echo 'Commit ${env.GIT_COMMIT}'
+                echo "foo is $foo"
+                echo "Commit ${env.GIT_COMMIT}"
                 echo 'Commit ${scmVars.GIT_COMMIT}'
                 echo 'Branch name ${env.GIT_BRANCH}'
                 echo 'Branch name ${scmVars.GIT_BRANCH}'
