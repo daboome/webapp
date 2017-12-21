@@ -3,7 +3,7 @@ node {
     echo "${scmVars.GIT_LOCAL_BRANCH}"
 
     withMaven {
-        maven 'Maven 3.3.9'
+        maven: 'Maven 3.3.9'
     }
 
     stage('Build') {
