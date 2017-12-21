@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        checkout([$class: 'GitSCM', branches: [[name: '/ad5/'], [name: '/ad6/'], [name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daboome/webapp']]])
+        scmVars = checkout([$class: 'GitSCM', branches: [[name: '/ad5/'], [name: '/ad6/'], [name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daboome/webapp']]])
         foo = 'foovalue'
     }
 
@@ -14,9 +14,9 @@ pipeline {
             steps {
                 echo 'foo is $foovalue'
                 echo 'Commit ${env.GIT_COMMIT}'
-                echo 'Commit ${env.GITCOMMIT}'
+                echo 'Commit ${scmVars.GIT_COMMIT}'
                 echo 'Branch name ${env.GIT_BRANCH}'
-                echo 'Branch name ${env.GITBRANCH}'
+                echo 'Branch name ${scmVars.GIT_BRANCH}'
                 sh 'mvn clean package -DwarName=wdw'
             }
         }
