@@ -11,9 +11,8 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                echo "GIT_COMMIT ${env.GIT_COMMIT}"
+                echo "GIT_COMMIT ${env.GIT_COMMIT}.indexOf('f')"
                 echo "GIT_BRANCH ${env.GIT_BRANCH}"
-                echo "BRANCH_NAME ${env.BRANCH_NAME}"
                 sh "mvn clean package -DwarName=${env.GIT_BRANCH}"
                 sh "cp target/${env.GIT_BRANCH}.war ./${env.GIT_BRANCH}.war"
             }
