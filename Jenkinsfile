@@ -7,4 +7,10 @@ node {
             sh "mvn clean package -DwarName=${scmVars.GIT_LOCAL_BRANCH} && cp target/${scmVars.GIT_LOCAL_BRANCH}.war ./${scmVars.GIT_LOCAL_BRANCH}.war"
         }
     }
+
+    stage('Deploy') {
+        if (scmVars.GIT_LOCAL_BRANCH == "ad5" || scmVars.GIT_LOCAL_BRANCH == "ad6") {
+            echo "now deploying.... ${scmVars.GIT_LOCAL_BRANCH}"
+        }
+    }
 }
