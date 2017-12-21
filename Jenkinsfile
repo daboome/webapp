@@ -15,7 +15,8 @@ pipeline {
                 echo "foo is $foo"
                 echo "Commit ${env.GIT_COMMIT}"
                 echo "Branch name ${env.GIT_BRANCH}"
-                sh 'mvn clean package -DwarName=wdw'
+                sh "mvn clean package -DwarName=${env.GIT_BRANCH}"
+                sh "cp target/${env.GIT_BRANCH}.war ./${env.GIT_BRANCH}.war"
             }
         }
     }
