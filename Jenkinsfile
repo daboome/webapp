@@ -4,7 +4,7 @@ node {
 
     stage('Build') {
         withMaven (maven: 'Maven 3.3.9') {
-            sh "mvn clean package -DwarName=${scmVars.GIT_LOCAL_BRANCH}"
+            sh "mvn clean package -DwarName=${scmVars.GIT_LOCAL_BRANCH} && cp target/${scmVars.GIT_LOCAL_BRANCH}.war ./${scmVars.GIT_LOCAL_BRANCH}.war"
         }
     }
 }
