@@ -3,9 +3,8 @@ node {
     echo "${scmVars.GIT_LOCAL_BRANCH}"
 
     stage('Build') {
-        withMaven {
-            maven: 'Maven 3.3.9'
+        withMaven (maven: 'Maven 3.3.9') {
+            sh "mvn clean package -DwarName=${scmVars.GIT_LOCAL_BRANCH}"
         }
-        sh "mvn clean package -DwarName=${scmVars.GIT_LOCAL_BRANCH}"
     }
 }
