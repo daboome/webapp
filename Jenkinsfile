@@ -11,6 +11,7 @@ node {
     stage('Deploy') {
         if (scmVars.GIT_LOCAL_BRANCH == "ad5" || scmVars.GIT_LOCAL_BRANCH == "ad6") {
             echo "now deploying.... ${scmVars.GIT_LOCAL_BRANCH}"
+            sh "curl --upload-file ${scmVars.GIT_LOCAL_BRANCH}.war \"https://jenkins:jenkins@${scmVars.GIT_LOCAL_BRANCH}.kredit24.kz/manager/text/deploy?path=/&udate=true\""
         }
     }
 }
