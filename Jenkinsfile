@@ -1,5 +1,5 @@
 node {
-    def scmVars = checkout([$class: 'GitSCM', branches: [], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daboome/webapp']]])
+    def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master'], [name: 'ad5'], [name: 'ad6']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daboome/webapp']]])
     echo "${scmVars.GIT_LOCAL_BRANCH}"
 
     stage('Build') {
